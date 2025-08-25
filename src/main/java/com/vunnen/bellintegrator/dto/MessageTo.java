@@ -8,8 +8,8 @@ import lombok.Setter;
 @Getter
 @Builder
 public class MessageTo {
-    private long msg_id;
-    private long timestamp;
+    private String msg_id;
+    private String timestamp;
     private String method;
     private String uri;
 }

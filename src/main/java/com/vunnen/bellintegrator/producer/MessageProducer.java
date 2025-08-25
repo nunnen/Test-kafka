@@ -1,6 +1,5 @@
 package com.vunnen.bellintegrator.producer;
 
-import com.vunnen.bellintegrator.dto.MessageTo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
