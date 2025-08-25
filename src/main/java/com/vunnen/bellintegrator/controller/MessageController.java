@@ -16,7 +16,7 @@ public class MessageController {
 
     @PostMapping("/post-message")
     public HttpStatus sendMessage(@RequestBody MessageIn messageIn) {
-        MessageTo messageTo = messageService.getMessage(messageIn);
+        MessageTo messageTo = messageService.getMessageTo(messageIn);
         try {
             messageService.sendMessage(messageTo);
             return HttpStatus.OK;

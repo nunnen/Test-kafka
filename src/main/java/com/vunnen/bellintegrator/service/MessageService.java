@@ -13,7 +13,7 @@ import java.time.Instant;
 public class MessageService {
     private final MessageProducer producer;
 
-    public MessageTo getMessage(MessageIn messageIn) {
+    public MessageTo getMessageTo(MessageIn messageIn) {
         return MessageTo.builder()
                 .msg_id(String.valueOf(messageIn.getMsg_id()))
                 .timestamp(String.valueOf(Instant.now().toEpochMilli()))
