@@ -19,7 +19,7 @@ public class MessageService {
     public MessageTo getMessage(MessageIn messageIn) {
         return MessageTo.builder()
                 .msg_id(String.valueOf(messageIn.getMsg_id()))
-                .timestamp(String.valueOf(Instant.now().getEpochSecond()))
+                .timestamp(String.valueOf(Instant.now().toEpochMilli()))
                 .method("POST")
                 .uri("/post-message")
                 .build();
