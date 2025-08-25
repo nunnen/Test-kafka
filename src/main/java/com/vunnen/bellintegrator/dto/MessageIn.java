@@ -6,5 +6,5 @@ import lombok.Setter;
 @Getter
 @Setter
 public class MessageIn {
-    private long msg_id;
+    private String msg_id;
 }
