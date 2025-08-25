@@ -1,7 +1,5 @@
 package com.vunnen.bellintegrator.service;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vunnen.bellintegrator.dto.MessageIn;
 import com.vunnen.bellintegrator.dto.MessageTo;
 import com.vunnen.bellintegrator.producer.MessageProducer;
@@ -14,7 +12,6 @@ import java.time.Instant;
 @RequiredArgsConstructor
 public class MessageService {
     private final MessageProducer producer;
-    private final ObjectMapper objectMapper;
 
     public MessageTo getMessage(MessageIn messageIn) {
         return MessageTo.builder()
@@ -26,18 +23,7 @@ public class MessageService {
     }
 
     public void sendMessage(MessageTo messageTo) {
-        String message = convertMessageToJson(messageTo);
-        producer.sendMessage(message);
-    }
-
-    private String convertMessageToJson(MessageTo messageTo) {
-        String json = null;
-        try {
-            json = objectMapper.writeValueAsString(messageTo);
-        } catch (JsonProcessingException e) {
-            throw new RuntimeException(e);
-        }
-        return json;
+        producer.sendMessage(messageTo);
     }
 
 
