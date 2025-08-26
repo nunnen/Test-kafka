@@ -21,7 +21,7 @@ public class ForceInternalErrorFilter extends OncePerRequestFilter {
         this.config = config;
     }
 
-    protected void doFilterInternal(HttpServletRequest req,
+    public void doFilterInternal(HttpServletRequest req,
                                     HttpServletResponse resp,
                                     FilterChain filterChain)
             throws ServletException, IOException {
