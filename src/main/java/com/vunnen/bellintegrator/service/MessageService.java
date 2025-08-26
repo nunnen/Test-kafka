@@ -31,7 +31,7 @@ public class MessageService {
                 .build();
     }
 
-    @KafkaListener(topics = "${kafka.topic.name}", groupId = "messages")
+    @KafkaListener(topics = "${kafka.topic.name}", groupId = "${kafka.groupId}")
     public void listen(MessageTo messageTo) {
         Message message = mapper.mapTo(messageTo);
         log.info("Listening message-{}", message);

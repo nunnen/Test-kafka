@@ -1,6 +1,7 @@
 kafka:
   topic:
     name: postedmessages
+  groupId: messages
 spring.application.name: Bell-Integrator
   
 # kafka
