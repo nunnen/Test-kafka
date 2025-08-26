@@ -1,0 +1,19 @@
+kafka:
+  topic:
+    name: postedmessages
+spring.application.name: Bell-Integrator
+  
+# kafka
+spring.kafka:
+  bootstrap-servers: localhost:9092
+  consumer.auto-offset-reset: earliest
+  template.default-topic: ${kafka.topic.name}
+  producer.value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+  consumer.value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+  consumer.properties.spring.json.value.default.type: com.vunnen.bellintegrator.dto.MessageTo
+
+# datasource
+spring.datasource:
+  username: postgres
+  password: postgres
+  url: jdbc:postgresql://localhost:5432/message_db

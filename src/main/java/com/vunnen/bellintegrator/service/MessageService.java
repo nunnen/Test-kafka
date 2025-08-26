@@ -5,6 +5,7 @@ import com.vunnen.bellintegrator.dto.MessageTo;
 import com.vunnen.bellintegrator.model.Message;
 import com.vunnen.bellintegrator.model.MessageMapper;
 import com.vunnen.bellintegrator.kafka.MessageProducer;
+import com.vunnen.bellintegrator.repository.MessageRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.annotation.KafkaListener;
@@ -16,6 +17,7 @@ import java.time.Instant;
 @RequiredArgsConstructor
 @Slf4j
 public class MessageService {
+    private final MessageRepository repository;
     private final MessageProducer producer;
     private final MessageMapper mapper;
 
@@ -33,6 +35,8 @@ public class MessageService {
     public void listen(MessageTo messageTo) {
         Message message = mapper.mapTo(messageTo);
         log.info("Listening message-{}", message);
+        repository.save(message);
+        log.info("Saving message-{}", message.getMsgId());
     }
 
     public void sendMessage(MessageTo messageTo) {
