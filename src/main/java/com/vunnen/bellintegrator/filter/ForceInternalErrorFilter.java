@@ -28,7 +28,7 @@ public class ForceInternalErrorFilter extends OncePerRequestFilter {
 
         String path = req.getRequestURI();
 
-        if (path.startsWith("/config")) {
+        if (path.startsWith("/config") || path.startsWith("/actuator")) {
             filterChain.doFilter(req, resp);
             return;
         }
